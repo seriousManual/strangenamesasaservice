@@ -1,11 +1,12 @@
 var fs = require('fs');
+var path = require('path');
 
 function Loader() {
 
 }
 
 Loader.prototype._getLanguage = function(path) {
-    console.log( path.match(/^(.*)\.(.*)$/));
+    console.log( path.parse(path) );
 
     return 'en';
 };
