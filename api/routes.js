@@ -51,7 +51,7 @@ function install(app) {
     app.get('/api/alliteration/:letter?', function(req, res, next) {
         var language = getLanguage(req);
 
-        sendName(myDispatcher.alliteration(language, req.params.letter) || null, language, res);
+        sendName(myDispatcher.alliteration(language, req.params.letter || null), language, res);
     });
 
     app.get('/api/languages', function(req, res, next) {
