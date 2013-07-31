@@ -27,8 +27,15 @@ function NotFoundError(path) {
 util.inherits(NotFoundError, BaseError);
 
 
+function LanguageNotSuppliedError() {
+    BaseError.call(this, 'AcceptLanguage missing', 406);
+}
+util.inherits(LanguageNotSuppliedError, BaseError);
+
+
 module.exports = {
     LanguageNotFoundError: LanguageNotFoundError,
     MethodNotSupportedError: MethodNotSupportedError,
-    NotFoundError: NotFoundError
+    NotFoundError: NotFoundError,
+    LanguageNotSuppliedError: LanguageNotSuppliedError
 };

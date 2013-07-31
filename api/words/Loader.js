@@ -5,10 +5,8 @@ function Loader() {
 
 }
 
-Loader.prototype._getLanguage = function(path) {
-    console.log( path.parse(path) );
-
-    return 'en';
+Loader.prototype._getLanguage = function(filePath) {
+    return path.basename(filePath, '.txt');
 };
 
 Loader.prototype._readFile = function(file, holder) {
@@ -39,12 +37,7 @@ Loader.prototype.load = function(holder, path) {
         files.forEach(function(file) {
             that._readFile(path + '/' + file, holder);
         });
-    })
-
-    holder.addWord('house', 'en');
-    holder.addWord('car', 'en');
-    holder.addWord('drum', 'en');
-    holder.addWord('flower', 'en');
+    });
 };
 
 module.exports = Loader;

@@ -15,8 +15,14 @@ function bootstrap() {
     return new Dispatcher(nounHolder, adjectiveHolder);
 }
 
-function getLanguage() {
-    return 'en';
+function getLanguage(req) {
+    var languages = req.acceptedLanguages;
+
+    if(languages.length > 0) {
+        return languages[0].match(/^[^\-]*/)[0];
+    }
+
+    return null;
 }
 
 function sendError(error, req, res, next) {
@@ -45,11 +51,19 @@ function install(app) {
     app.get('/api/name', function(req, res, next) {
         var language = getLanguage(req);
 
+        if(!language) {
+            throw new errors.LanguageNotSuppliedError();
+        }
+
         sendName(myDispatcher.name(language), language, res);
     });
 
     app.get('/api/alliteration/:letter?', function(req, res, next) {
         var language = getLanguage(req);
+
+        if(!language) {
+            throw new errors.LanguageNotSuppliedError();
+        }
 
         sendName(myDispatcher.alliteration(language, req.params.letter || null), language, res);
     });
