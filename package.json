@@ -1,0 +1,25 @@
+{
+    "name": "strangenamesasaservice",
+    "description": "strange names as a service",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zaphod1984/strangenamesasaservice.git"
+    },
+    "author": "Manuel Ernst <zaphod84@gmx.de>",
+    "dependencies": {
+        "express": "*"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "chai": "*"
+    },
+    "files": [
+        "index.js"
+    ],
+    "main": "./server.js",
+    "keywords": [],
+    "scripts": {
+        "test": "./node_modules/mocha/bin/mocha tests"
+    }
+}
