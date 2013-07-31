@@ -6,9 +6,8 @@ function Dispatcher(nouns, adjectives) {
 }
 
 Dispatcher.prototype.name = function(language) {
-    var noun, adjective;
-    noun = this._nouns.get(language);
-    adjective = this._adjectives.get(language);
+    var noun = this._nouns.get(language);
+    var adjective = this._adjectives.get(language);
 
     if(!noun || !adjective) {
         throw new errors.LanguageNotFoundError(language);
