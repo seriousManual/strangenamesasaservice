@@ -8,7 +8,7 @@
     },
     "author": "Manuel Ernst <zaphod84@gmx.de>",
     "dependencies": {
-        "express": "*"
+        "express": "3.3.4"
     },
     "devDependencies": {
         "mocha": "*",
