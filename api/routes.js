@@ -18,15 +18,24 @@ function getLanguage() {
     return 'en';
 }
 
-function send(name, language, res) {
+function sendError(error, req, res, next) {
+    var result = {
+        error: error.message
+    };
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(error.statusCode, JSON.stringify(result));
+}
+
+function sendName(name, language, res) {
     var result = {
         name: name,
         language: language
     };
 
-    //TODO: set response header
+    res.setHeader('Content-Type', 'application/json');
 
-    res.end(JSON.stringify(result));
+    res.send(200, JSON.stringify(result));
 }
 
 function install(app) {
@@ -35,18 +44,20 @@ function install(app) {
     app.get('/name', function(req, res, next) {
         var language = getLanguage(req);
 
-        send(myDispatcher.name(language), language, res);
+        sendName(myDispatcher.name(language), language, res);
     });
 
-    app.get('/palindrome/:letter?', function(req, res, next) {
+    app.get('/alliteration/:letter?', function(req, res, next) {
         var language = getLanguage(req);
 
-        send(myDispatcher.palindrome(language, req.params.letter) || null, language, res);
+        sendName(myDispatcher.alliteration(language, req.params.letter) || null, language, res);
     });
 
     app.get('/languages', function(req, res, next) {
-
+        res.send(200, JSON.stringify(myDispatcher.languages()));
     });
+
+    app.use(sendError);
 }
 
 module.exports.install = install;
