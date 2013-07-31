@@ -24,7 +24,7 @@ Loader.prototype._readFile = function(file, holder) {
             holder.addWord(word, language);
         });
     })
-}
+};
 
 Loader.prototype.load = function(holder, path) {
     var that = this;

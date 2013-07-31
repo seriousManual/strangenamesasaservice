@@ -25,7 +25,7 @@ Holder.prototype._addToIndex = function(cluster, word) {
     }
 
     cluster.index[first].push(word);
-}
+};
 
 Holder.prototype._getRandomElement = function(collection) {
     if(!collection || collection.length === 0) {
@@ -33,7 +33,7 @@ Holder.prototype._getRandomElement = function(collection) {
     }
 
     return collection[parseInt(Math.random() * collection.length, 10)];
-}
+};
 
 Holder.prototype.get = function(language, letter) {
     var cluster = this._getLanguageCluster(language, false);
@@ -47,7 +47,7 @@ Holder.prototype.get = function(language, letter) {
     } else {
         return this._getRandomElement(cluster.index[letter]);
     }
-}
+};
 
 Holder.prototype.addWord = function(word, language) {
     var cluster = this._getLanguageCluster(language, true);
@@ -58,6 +58,6 @@ Holder.prototype.addWord = function(word, language) {
 
 Holder.prototype.languages = function() {
     return Object.keys(this._words);
-}
+};
 
 module.exports = Holder;
