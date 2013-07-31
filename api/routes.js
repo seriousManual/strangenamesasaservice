@@ -9,8 +9,8 @@ function bootstrap() {
     var nounHolder = new Holder();
     var adjectiveHolder = new Holder();
 
-    myLoader.load(nounHolder, __dirname + '../resources/nouns');
-    myLoader.load(adjectiveHolder, __dirname + '../resources/adjectives');
+    myLoader.load(nounHolder, __dirname + '/../resources/nouns');
+    myLoader.load(adjectiveHolder, __dirname + '/../resources/adjectives');
 
     return new Dispatcher(nounHolder, adjectiveHolder);
 }
