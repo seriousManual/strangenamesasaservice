@@ -1,6 +1,7 @@
 var Dispatcher = require('./words/Dispatcher');
 var Holder = require('./words/Holder');
 var Loader = require('./words/Loader');
+var errors = require('./errors');
 
 var myLoader = new Loader();
 
@@ -41,27 +42,31 @@ function sendName(name, language, res) {
 function install(app) {
     var myDispatcher = bootstrap();
 
-    app.get('/name', function(req, res, next) {
+    app.get('/api/name', function(req, res, next) {
         var language = getLanguage(req);
 
         sendName(myDispatcher.name(language), language, res);
     });
 
-    app.get('/alliteration/:letter?', function(req, res, next) {
+    app.get('/api/alliteration/:letter?', function(req, res, next) {
         var language = getLanguage(req);
 
         sendName(myDispatcher.alliteration(language, req.params.letter) || null, language, res);
     });
 
-    app.get('/languages', function(req, res, next) {
+    app.get('/api/languages', function(req, res, next) {
         res.send(200, JSON.stringify(myDispatcher.languages()));
+    });
+
+    app.get('/api/*', function(req, res, next) {
+        throw new errors.NotFoundError(req.path);
+    });
+
+    app.all('/api/*', function(req, res, next) {
+        throw new errors.MethodNotSupportedError(req.method);
     });
 
     app.use(sendError);
 }
 
 module.exports.install = install;
-
-//     /name
-//     /palindrome
-//     /palindrome/:letter
