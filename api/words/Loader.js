@@ -26,16 +26,16 @@ Loader.prototype._readFile = function(file, holder) {
     })
 };
 
-Loader.prototype.load = function(holder, path) {
+Loader.prototype.load = function(holder, dirPath) {
     var that = this;
 
-    fs.readdir(path, function(error, files) {
+    fs.readdir(dirPath, function(error, files) {
         if(error) {
-            return console.error('could not open directory ' + path);
+            return console.error('could not open directory: ' + dirPath);
         }
 
         files.forEach(function(file) {
-            that._readFile(path + '/' + file, holder);
+            that._readFile(path.join(dirPath, file), holder);
         });
     });
 };

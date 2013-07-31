@@ -1,3 +1,5 @@
+var path = require('path');
+
 var Dispatcher = require('./words/Dispatcher');
 var Holder = require('./words/Holder');
 var Loader = require('./words/Loader');
@@ -9,8 +11,8 @@ function bootstrap() {
     var nounHolder = new Holder();
     var adjectiveHolder = new Holder();
 
-    myLoader.load(nounHolder, __dirname + '/../resources/nouns');
-    myLoader.load(adjectiveHolder, __dirname + '/../resources/adjectives');
+    myLoader.load(nounHolder, path.join(__dirname, '/../resources/nouns'));
+    myLoader.load(adjectiveHolder, path.join(__dirname, '/../resources/adjectives'));
 
     return new Dispatcher(nounHolder, adjectiveHolder);
 }
