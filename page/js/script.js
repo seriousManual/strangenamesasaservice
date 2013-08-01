@@ -1,5 +1,7 @@
-function callAPI(url, container) {
+function callAPI(category, url, container) {
     container.removeClass('errorClass');
+
+    ga('send', 'event', 'tryit', category, url);
 
     $.get(url)
         .done(function(data) {
@@ -12,13 +14,13 @@ function callAPI(url, container) {
 }
 
 $(document).ready(function() {
-    $('#getName').click(callAPI.bind(null, '/api/name', $('#getNameRes')));
-    $('#getAlliteration').click(callAPI.bind(null, '/api/alliteration', $('#getAlliterationRes')));
+    $('#getName').click(callAPI.bind(null, 'name', '/api/name', $('#getNameRes')));
+    $('#getAlliteration').click(callAPI.bind(null, 'alliteration', '/api/alliteration', $('#getAlliterationRes')));
     $('#getAlliterationLetter').click(function() {
         var letter = $('#letter').val();
 
         if(letter) {
-            callAPI('/api/alliteration/' + letter, $('#getAlliterationLetterRes'));
+            callAPI('alliterationLetter', '/api/alliteration/' + letter, $('#getAlliterationLetterRes'));
         }
     });
 });

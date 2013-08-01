@@ -19,7 +19,7 @@ Dispatcher.prototype.name = function(language) {
 Dispatcher.prototype.alliteration = function(language, letter) {
     var adjective, noun;
 
-    letter = (letter + '').substr(0,1).toLowerCase();
+    letter = (letter ? letter + '' : '').substr(0,1).toLowerCase();
 
     adjective = this._adjectives.get(language, letter || null);
 
