@@ -1,5 +1,5 @@
 body {
-    padding-top:30px;
+    padding-top:70px;
 }
 
 .body-content {
@@ -22,3 +22,6 @@ body {
     border:0
 }
 
+.errorClass {
+    border:1px solid red;
+}

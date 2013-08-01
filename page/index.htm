@@ -19,13 +19,28 @@
 
 <a href="https://github.com/zaphod1984/strangenamesasaservice"><img style="z-index:100; position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">SNAAS</a>
+        <div class="nav-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#api">API</a></li>
+                <li><a href="#try">Try it</a></li>
+                <li><a href="#contribute">Contribute</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <div class="container">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <h1>SNAAS</h1>
         <h2>Strange Names As A Service </h2>
-        <p>Inspired by <a href="https://foaas.herokuapp.com/">Fuck off as a service</a> and the AngularJS naming scheme, this is a service that builds strange name combinations like "impure skiing" so you dont have to.</p>
+        <p>Inspired by <a href="https://foaas.herokuapp.com/">Fuck off as a service</a> and the AngularJS naming scheme, this is a service that builds strange name combinations like <em>"impure skiing"</em> so you don't have to.</p>
         <p>Choose between arbitrary adjective-noun combinations, random alliterations or alliterations starting with your desired literal.</p>
     </div>
 
@@ -56,29 +71,33 @@
             </div>
         </div>
 
+        <a name="try"></a>
+
         <div id="tryIt" class="block">
             <!--TODO: log call with analytics -->
-            <h2>Try it out</h2>
-
-            <hr>
+            <h2>Try it</h2>
 
             <div class="row">
                 <div class="col-lg-5">
                     <button id="getName" type="button" class="btn btn-primary btn-large btn-block">Get me a strange name</button>
                 </div>
                 <div class="col-lg-7">
-                    <pre id="getNameRes">empty</pre>
+                    <pre id="getNameRes"></pre>
                 </div>
             </div>
+
+            <hr>
 
             <div class="row">
                 <div class="col-lg-5">
                     <button id="getAlliteration" type="button" class="btn btn-primary btn-large btn-block">Get me a strange alliteration</button>
                 </div>
                 <div class="col-lg-7">
-                    <pre id="getAlliterationRes">empty</pre>
+                    <pre id="getAlliterationRes"></pre>
                 </div>
             </div>
+
+            <hr>
 
             <div class="row">
                 <div class="col-lg-5">
@@ -93,9 +112,8 @@
         <a name="api"></a>
         <div class="block">
             <h2>API</h2>
-            <hr>
             <h3>/api/name</h3>
-            Returns a strange name in abitrary adjective noun combination.
+            Returns a strange name in a arbitrary adjective-noun combination.
             <p><a class="btn btn-default" href="/api/name">Try &raquo;</a></p>
 
             <h3>/api/alliteration/:letter?</h3>
@@ -107,14 +125,19 @@
         </div>
 
         <div class="block">
-            <h2>About</h2>
-            <hr>
-            <p>Created by <a href="https://twitter.com/zaphod1984">@zaphod1984</a></p>
-            <p>Checkout my <a href="https://npmjs.org/~zaphod1984">modules</a>.</p>
-            <p>All <a href="https://github.com/zaphod1984/strangenamesasaservice">contributions</a> are very welcome.</p>
+            <a name="contribute"></a>
+            <h2>Contribute</h2>
+            <p>I'm permanently looking for more languages to include into the strange name generator.</p>
+            <p>Feel free to do a Pull Request in whatever language you like and are familiar with!</p>
+            <a class="btn btn-default" href="https://github.com/zaphod1984/strangenamesasaservice">Github &raquo;</a>
         </div>
 
-        <hr>
+        <div class="block">
+            <a name="about"></a>
+            <h2>About</h2>
+            <p>Created by <a href="https://twitter.com/zaphod1984">@zaphod1984</a></p>
+            <p>All <a href="https://github.com/zaphod1984/strangenamesasaservice">contributions</a> are very welcome!</p>
+        </div>
 
         <footer>
             <p>&copy; SNAAS inc. 2013</p>

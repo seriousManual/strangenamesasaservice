@@ -1,7 +1,14 @@
 function callAPI(url, container) {
-    $.get(url, function(data) {
-        container.text(JSON.stringify(data));
-    });
+    container.removeClass('errorClass');
+
+    $.get(url)
+        .done(function(data) {
+            container.text(JSON.stringify(data));
+        })
+        .fail(function(data, state, message) {
+            container.addClass('errorClass');
+            container.text(message);
+        })
 }
 
 $(document).ready(function() {
