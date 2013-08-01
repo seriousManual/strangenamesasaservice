@@ -12,6 +12,7 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/script.js"></script>
 </head>
 
 <body>
@@ -63,28 +64,28 @@
 
             <div class="row">
                 <div class="col-lg-5">
-                    <button type="button" class="btn btn-primary btn-large btn-block">Get me a strange name</button>
+                    <button id="getName" type="button" class="btn btn-primary btn-large btn-block">Get me a strange name</button>
                 </div>
                 <div class="col-lg-7">
-                    <pre></pre>
+                    <pre id="getNameRes">empty</pre>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-lg-5">
-                    <button type="button" class="btn btn-primary btn-large btn-block">Get me a strange alliteration</button>
+                    <button id="getAlliteration" type="button" class="btn btn-primary btn-large btn-block">Get me a strange alliteration</button>
                 </div>
                 <div class="col-lg-7">
-                    <pre></pre>
+                    <pre id="getAlliterationRes">empty</pre>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-lg-5">
-                    <button type="button" class="btn btn-primary btn-large btn-block">Get me a strange allteration starting with <input type="text"></button>
+                    <button id="getAlliterationLetter" type="button" class="btn btn-primary btn-large btn-block">Get me a strange alliteration starting with <input id="letter" type="text"></button>
                 </div>
                 <div class="col-lg-7">
-                    <pre></pre>
+                    <pre id="getAlliterationLetterRes"></pre>
                 </div>
             </div>
         </div>
