@@ -26,7 +26,11 @@ Dispatcher.prototype.alliteration = function(language, letter) {
     }
 
     if(!adjective || !noun) {
-        throw new errors.LanguageNotFoundError(language);
+        if(letter) {
+            throw new errors.CombinationLanguageLetterNotFoundError(letter, language);
+        } else {
+            throw new errors.LanguageNotFoundError(language);
+        }
     }
 
     return adjective + ' ' + noun;

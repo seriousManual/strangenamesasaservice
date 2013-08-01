@@ -1,15 +1,15 @@
+var dedupe = require('dedupe');
+
 function Holder() {
     this._words = {};
+    this._letters = [];
 }
 
 Holder.prototype._getLanguageCluster = function(language, create) {
     if(this._words[language]) {
         return this._words[language];
     } else if(create) {
-        this._words[language] = {
-            index: {},
-            words: []
-        };
+        this._words[language] = {};
 
         return this._words[language];
     }
@@ -17,14 +17,21 @@ Holder.prototype._getLanguageCluster = function(language, create) {
     return null;
 };
 
+Holder.prototype._addToLetterList = function(word) {
+    var letter = word.substr(0, 1);
+
+    this._letters.push(letter);
+    this._letters = dedupe(this._letters);
+};
+
 Holder.prototype._addToIndex = function(cluster, word) {
     var first = word.substr(0, 1);
 
-    if(!cluster.index[first]) {
-        cluster.index[first] = [];
+    if(!cluster[first]) {
+        cluster[first] = [];
     }
 
-    cluster.index[first].push(word);
+    cluster[first].push(word);
 };
 
 Holder.prototype._getRandomElement = function(collection) {
@@ -43,21 +50,21 @@ Holder.prototype.get = function(language, letter) {
     }
 
     if(!letter) {
-        return this._getRandomElement(cluster.words);
-    } else {
-        return this._getRandomElement(cluster.index[letter]);
+        letter = this._getRandomElement(this._letters);
     }
+
+    return this._getRandomElement(cluster[letter]);
 };
 
 Holder.prototype.addWord = function(word, language) {
     var cluster = this._getLanguageCluster(language, true);
 
-    cluster.words.push(word);
     this._addToIndex(cluster, word);
+    this._addToLetterList(word);
 };
 
 Holder.prototype.languages = function() {
-    return Object.keys(this._words);
+    return [].concat(this._letters);
 };
 
 module.exports = Holder;

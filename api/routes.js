@@ -1,4 +1,5 @@
 var path = require('path');
+var util = require('util');
 
 var Dispatcher = require('./words/Dispatcher');
 var Holder = require('./words/Holder');
@@ -27,7 +28,15 @@ function getLanguage(req) {
     return null;
 }
 
-function sendError(error, req, res, next) {
+function errorHandler(error, req, res, next) {
+    if(!error.statusCode || !error.message) {
+        console.error(error.stack);
+
+        error = new errors.InternalServerError();
+    } else {
+        console.error(error.message);
+    }
+
     var result = {
         error: error.message
     };
@@ -42,8 +51,9 @@ function sendName(name, language, res) {
         language: language
     };
 
-    res.setHeader('Content-Type', 'application/json');
+    console.log(util.format('Sending "%s" in "%s"', name, language));
 
+    res.setHeader('Content-Type', 'application/json');
     res.send(200, JSON.stringify(result));
 }
 
@@ -75,14 +85,14 @@ function install(app) {
     });
 
     app.get('/api/*', function(req, res, next) {
-        throw new errors.NotFoundError(req.path);
+        next(new errors.NotFoundError(req.path));
     });
 
     app.all('/api/*', function(req, res, next) {
-        throw new errors.MethodNotSupportedError(req.method);
+        next(new errors.MethodNotSupportedError(req.method));
     });
 
-    app.use(sendError);
+    app.use(errorHandler);
 }
 
 module.exports.install = install;

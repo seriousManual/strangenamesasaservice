@@ -1,42 +1,55 @@
 var fs = require('fs');
 var path = require('path');
 
-function Loader() {
+var seq = require('seq');
 
-}
+function Loader() {}
 
 Loader.prototype._getLanguage = function(filePath) {
     return path.basename(filePath, '.txt');
 };
 
-Loader.prototype._readFile = function(file, holder) {
+Loader.prototype._readFile = function(file, holder, callback) {
     var that = this;
 
     fs.readFile(file, function(error, content) {
         if(error) {
-            return console.error('could not read file: ' + file);
+            console.error('could not read file: ' + file);
+            return callback();
         }
 
-        var content = content.toString().split('\n');
+        content = content.toString().split('\n');
         var language = that._getLanguage(file);
 
         content.forEach(function(word) {
-            holder.addWord(word, language);
+            holder.addWord(word.trim(), language);
         });
+
+        callback();
     })
 };
 
 Loader.prototype.load = function(holder, dirPath) {
     var that = this;
 
+    console.log('loading for ' + dirPath);
+
     fs.readdir(dirPath, function(error, files) {
         if(error) {
             return console.error('could not open directory: ' + dirPath);
         }
 
+        var chain = seq();
+
         files.forEach(function(file) {
-            that._readFile(path.join(dirPath, file), holder);
+            chain.par(function() {
+                that._readFile(path.join(dirPath, file), holder, this);
+            });
         });
+
+        chain.seq(function() {
+            console.log('finished loading for: ' + dirPath);
+        })
     });
 };
 

@@ -15,6 +15,12 @@ function LanguageNotFoundError(language) {
 util.inherits(LanguageNotFoundError, BaseError);
 
 
+function CombinationLanguageLetterNotFoundError(letter, language) {
+    BaseError.call(this, 'Combination of language ' + language + ' and letter ' + letter + ' not found', 406);
+}
+util.inherits(CombinationLanguageLetterNotFoundError, BaseError);
+
+
 function MethodNotSupportedError(method) {
     BaseError.call(this, 'Method not supported: ' + method, 405);
 }
@@ -33,9 +39,16 @@ function LanguageNotSuppliedError() {
 util.inherits(LanguageNotSuppliedError, BaseError);
 
 
+function InternalServerError() {
+    BaseError.call(this, 'Internal Server Error', 502);
+}
+util.inherits(InternalServerError, BaseError);
+
 module.exports = {
     LanguageNotFoundError: LanguageNotFoundError,
     MethodNotSupportedError: MethodNotSupportedError,
     NotFoundError: NotFoundError,
-    LanguageNotSuppliedError: LanguageNotSuppliedError
+    LanguageNotSuppliedError: LanguageNotSuppliedError,
+    InternalServerError: InternalServerError,
+    CombinationLanguageLetterNotFoundError: CombinationLanguageLetterNotFoundError
 };
