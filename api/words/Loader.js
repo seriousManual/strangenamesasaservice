@@ -3,6 +3,8 @@ var path = require('path');
 
 var seq = require('seq');
 
+var logger = require('../logger');
+
 function Loader() {}
 
 Loader.prototype._getLanguage = function(filePath) {
@@ -14,7 +16,7 @@ Loader.prototype._readFile = function(file, holder, callback) {
 
     fs.readFile(file, function(error, content) {
         if(error) {
-            console.error('could not read file: ' + file);
+            logger.error('could not read file: ' + file);
             return callback();
         }
 
@@ -32,11 +34,10 @@ Loader.prototype._readFile = function(file, holder, callback) {
 Loader.prototype.load = function(holder, dirPath) {
     var that = this;
 
-    console.log('loading for ' + dirPath);
-
+    var loadStopwatch = logger.startTimer();
     fs.readdir(dirPath, function(error, files) {
         if(error) {
-            return console.error('could not open directory: ' + dirPath);
+            return logger.error('could not open directory: ' + dirPath)
         }
 
         var chain = seq();
@@ -48,7 +49,7 @@ Loader.prototype.load = function(holder, dirPath) {
         });
 
         chain.seq(function() {
-            console.log('finished loading for: ' + dirPath);
+            loadStopwatch.done('finished loading for: ' + dirPath);
         });
     });
 };

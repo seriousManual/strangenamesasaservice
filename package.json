@@ -10,7 +10,8 @@
     "dependencies": {
         "express": "3.3.4",
         "dedupe": "0.2.3",
-        "seq": "0.3.5"
+        "seq": "0.3.5",
+        "winston": "0.7.2"
     },
     "devDependencies": {
         "mocha": "*",

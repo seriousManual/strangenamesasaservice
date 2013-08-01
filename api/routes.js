@@ -5,6 +5,7 @@ var Dispatcher = require('./words/Dispatcher');
 var Holder = require('./words/Holder');
 var Loader = require('./words/Loader');
 var errors = require('./errors');
+var logger = require('./logger');
 
 var myLoader = new Loader();
 
@@ -30,11 +31,11 @@ function getLanguage(req) {
 
 function errorHandler(error, req, res, next) {
     if(!error.statusCode || !error.message) {
-        console.error(error.stack);
+        logger.error(error.stack);
 
         error = new errors.InternalServerError();
     } else {
-        console.error(error.message);
+        logger.error(error.message);
     }
 
     var result = {
@@ -51,7 +52,7 @@ function sendName(name, language, res) {
         language: language
     };
 
-    console.log(util.format('Sending "%s" in "%s"', name, language));
+    logger.info(util.format('Sending "%s" in "%s"', name, language));
 
     res.setHeader('Content-Type', 'application/json');
     res.send(200, JSON.stringify(result));
