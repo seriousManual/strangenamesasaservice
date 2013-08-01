@@ -7,9 +7,10 @@ body {
     padding-right: 15px;
 }
 
-#tryIt {
-    margin-bottom:50px;
+.block {
+    margin-bottom: 40px;
 }
+
 
 #tryIt div {
     margin-bottom:3px;
