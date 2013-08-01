@@ -1,7 +1,7 @@
 {
     "name": "strangenamesasaservice",
     "description": "strange names as a service",
-    "version": "0.0.1",
+    "version": "0.1.0-4",
     "repository": {
         "type": "git",
         "url": "https://github.com/zaphod1984/strangenamesasaservice.git"
@@ -17,12 +17,12 @@
         "mocha": "*",
         "chai": "*"
     },
-    "files": [
-        "index.js"
-    ],
-    "main": "./server.js",
     "keywords": [],
     "scripts": {
-        "test": "./node_modules/mocha/bin/mocha tests"
-    }
+        "start": "node server.js"
+    },
+    "engines": {
+        "node": ">=0.8"
+    },
+    "subdomain": "strangenamesasaservice"
 }
