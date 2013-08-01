@@ -37,7 +37,7 @@ Dispatcher.prototype.alliteration = function(language, letter) {
 };
 
 Dispatcher.prototype.languages = function() {
-    return this._nouns.languages();
+    return this._adjectives.languages();
 };
 
 module.exports = Dispatcher;

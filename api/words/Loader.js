@@ -22,7 +22,7 @@ Loader.prototype._readFile = function(file, holder, callback) {
         var language = that._getLanguage(file);
 
         content.forEach(function(word) {
-            holder.addWord(word.trim(), language);
+            holder.addWord(word.trim().toLowerCase(), language);
         });
 
         callback();
@@ -49,7 +49,7 @@ Loader.prototype.load = function(holder, dirPath) {
 
         chain.seq(function() {
             console.log('finished loading for: ' + dirPath);
-        })
+        });
     });
 };
 
