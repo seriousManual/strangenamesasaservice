@@ -1,0 +1,23 @@
+body {
+    padding-top:30px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#tryIt {
+    margin-bottom:50px;
+}
+
+#tryIt div {
+    margin-bottom:3px;
+}
+
+#tryIt input {
+    width:30px;
+    text-align:center;
+    border:0
+}
+
