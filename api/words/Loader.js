@@ -5,15 +5,11 @@ var seq = require('seq');
 
 var logger = require('../logger');
 
-function Loader() {}
-
-Loader.prototype._getLanguage = function(filePath) {
+function _getLanguage(filePath) {
     return path.basename(filePath, '.txt');
-};
+}
 
-Loader.prototype._readFile = function(file, holder, callback) {
-    var that = this;
-
+function _readFile(file, holder, callback) {
     fs.readFile(file, function(error, content) {
         if(error) {
             logger.error('could not read file: ' + file);
@@ -21,7 +17,7 @@ Loader.prototype._readFile = function(file, holder, callback) {
         }
 
         content = content.toString().split('\n');
-        var language = that._getLanguage(file);
+        var language = _getLanguage(file);
 
         content.forEach(function(word) {
             holder.addWord(word.trim().toLowerCase(), language);
@@ -29,12 +25,11 @@ Loader.prototype._readFile = function(file, holder, callback) {
 
         callback();
     })
-};
+}
 
-Loader.prototype.load = function(holder, dirPath) {
-    var that = this;
-
+function load(holder, dirPath) {
     var loadStopwatch = logger.startTimer();
+
     fs.readdir(dirPath, function(error, files) {
         if(error) {
             return logger.error('could not open directory: ' + dirPath)
@@ -44,7 +39,7 @@ Loader.prototype.load = function(holder, dirPath) {
 
         files.forEach(function(file) {
             chain.par(function() {
-                that._readFile(path.join(dirPath, file), holder, this);
+                _readFile(path.join(dirPath, file), holder, this);
             });
         });
 
@@ -52,6 +47,7 @@ Loader.prototype.load = function(holder, dirPath) {
             loadStopwatch.done('finished loading for: ' + dirPath);
         });
     });
-};
+}
 
-module.exports = Loader;
+
+module.exports.load = load;

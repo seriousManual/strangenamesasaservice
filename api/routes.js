@@ -3,18 +3,16 @@ var util = require('util');
 
 var Dispatcher = require('./words/Dispatcher');
 var Holder = require('./words/Holder');
-var Loader = require('./words/Loader');
+var loader = require('./words/Loader');
 var errors = require('./errors');
 var logger = require('./logger');
-
-var myLoader = new Loader();
 
 function bootstrap() {
     var nounHolder = new Holder();
     var adjectiveHolder = new Holder();
 
-    myLoader.load(nounHolder, path.join(__dirname, '/../resources/nouns'));
-    myLoader.load(adjectiveHolder, path.join(__dirname, '/../resources/adjectives'));
+    loader.load(nounHolder, path.join(__dirname, '/../resources/nouns'));
+    loader.load(adjectiveHolder, path.join(__dirname, '/../resources/adjectives'));
 
     return new Dispatcher(nounHolder, adjectiveHolder);
 }
@@ -68,17 +66,34 @@ function install(app) {
             throw new errors.LanguageNotSuppliedError();
         }
 
-        sendName(myDispatcher.name(language), language, res);
+        var result = myDispatcher.name(language);
+
+        if(!result) {
+            return next(new errors.LanguageNotFoundError(language));
+        }
+
+        sendName(result, language, res);
     });
 
     app.get('/api/alliteration/:letter?', function(req, res, next) {
         var language = getLanguage(req);
+        var letter = req.params.letter || null;
 
         if(!language) {
             throw new errors.LanguageNotSuppliedError();
         }
 
-        sendName(myDispatcher.alliteration(language, req.params.letter || null), language, res);
+        var result = myDispatcher.alliteration(language, letter);
+
+        if(!result) {
+            if(letter) {
+                return next(new errors.CombinationLanguageLetterNotFoundError(letter, language));
+            } else {
+                return next(new errors.LanguageNotFoundError(language));
+            }
+        }
+
+        sendName(result, language, res);
     });
 
     app.get('/api/languages', function(req, res, next) {

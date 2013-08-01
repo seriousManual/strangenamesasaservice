@@ -10,7 +10,7 @@ Dispatcher.prototype.name = function(language) {
     var adjective = this._adjectives.get(language);
 
     if(!noun || !adjective) {
-        throw new errors.LanguageNotFoundError(language);
+        return null;
     }
 
     return adjective + ' ' + noun;
@@ -26,11 +26,7 @@ Dispatcher.prototype.alliteration = function(language, letter) {
     }
 
     if(!adjective || !noun) {
-        if(letter) {
-            throw new errors.CombinationLanguageLetterNotFoundError(letter, language);
-        } else {
-            throw new errors.LanguageNotFoundError(language);
-        }
+        return null;
     }
 
     return adjective + ' ' + noun;
