@@ -1,14 +1,11 @@
-var path = require('path');
-
 var express = require('express');
 
 var routes = require('./api/routes');
-var slashRedir = require('./slashRedir');
+var middlewares = require('./middlewares');
 
 var app = express();
-app.use(express.logger());
-app.use(slashRedir());
-app.use(express.static(path.join(__dirname, '/page'), {redirect:true}));
+
+middlewares.install(app);
 
 routes.install(app);
 
