@@ -1,5 +1,3 @@
-var $waiting = $('<img>').attr('src', '/img/waiting.gif');
-
 function callAPI(category, url, container) {
     container.removeClass('errorClass');
     container.html('<img src="/img/waiting.gif">');
@@ -8,10 +6,7 @@ function callAPI(category, url, container) {
 
     var ajaxCall = $.get(url)
         .done(function(data) {
-                setTimeout(function() {
-                    container.text(JSON.stringify(data));
-                }, 2000);
-
+            container.text(JSON.stringify(data));
         })
         .fail(function(data, state, message) {
             container.addClass('errorClass');
