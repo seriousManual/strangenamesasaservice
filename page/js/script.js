@@ -6,7 +6,7 @@ function callAPI(category, url, container) {
 
     ga('send', 'event', 'tryit', category, url);
 
-    $.get(url)
+    var ajaxCall = $.get(url)
         .done(function(data) {
                 setTimeout(function() {
                     container.text(JSON.stringify(data));
@@ -15,7 +15,7 @@ function callAPI(category, url, container) {
         })
         .fail(function(data, state, message) {
             container.addClass('errorClass');
-            container.text(message);
+            container.text(ajaxCall.responseText);
         })
 }
 

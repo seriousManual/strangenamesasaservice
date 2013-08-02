@@ -10,13 +10,13 @@ util.inherits(BaseError, Error);
 
 
 function LanguageNotFoundError(language) {
-    BaseError.call(this, 'Language not found: ' + language, 406);
+    BaseError.call(this, 'Language not found: ' + language, 601);
 }
 util.inherits(LanguageNotFoundError, BaseError);
 
 
 function CombinationLanguageLetterNotFoundError(letter, language) {
-    BaseError.call(this, 'Combination of language ' + language + ' and letter ' + letter + ' not found', 406);
+    BaseError.call(this, 'Combination of language ' + language + ' and letter ' + letter + ' not found', 602);
 }
 util.inherits(CombinationLanguageLetterNotFoundError, BaseError);
 
