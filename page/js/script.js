@@ -1,6 +1,8 @@
+var $img = $('<img>').attr('src', '/img/waiting.gif');
+
 function callAPI(category, url, container) {
     container.removeClass('errorClass');
-    container.html('<img src="/img/waiting.gif">');
+    container.empty().append($img);
 
     ga('send', 'event', 'tryit', category, url);
 
