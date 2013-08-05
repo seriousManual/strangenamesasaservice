@@ -25,5 +25,7 @@ Alliteration starting with :letter
 
 ## Contribution
 
+Contributions are very welcome!
+
 * More languages (Until now only english is supported)
 * More language resources
