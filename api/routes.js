@@ -6,6 +6,7 @@ var Holder = require('./words/Holder');
 var loader = require('./words/Loader');
 var errors = require('./errors');
 var logger = require('./logger');
+var benchmark = require('../middlewares/benchmark');
 
 function bootstrap() {
     var nounHolder = new Holder();
@@ -59,7 +60,7 @@ function sendName(name, language, res) {
 function install(app) {
     var myDispatcher = bootstrap();
 
-    app.get('/api/name', function(req, res, next) {
+    app.get('/api/name', benchmark, function(req, res, next) {
         var language = getLanguage(req);
 
         if(!language) {
@@ -75,7 +76,7 @@ function install(app) {
         sendName(result, language, res);
     });
 
-    app.get('/api/alliteration/:letter?', function(req, res, next) {
+    app.get('/api/alliteration/:letter?', benchmark, function(req, res, next) {
         var language = getLanguage(req);
         var letter = req.params.letter || null;
 
@@ -96,7 +97,7 @@ function install(app) {
         sendName(result, language, res);
     });
 
-    app.get('/api/languages', function(req, res, next) {
+    app.get('/api/languages', benchmark, function(req, res, next) {
         res.send(200, JSON.stringify(myDispatcher.languages()));
     });
 

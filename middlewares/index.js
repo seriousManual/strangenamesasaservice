@@ -23,23 +23,11 @@ function logging(req, res, next) {
     next();
 }
 
-function benchmark(req, res, next) {
-    var stopWatch= logger.startTimer();
-
-    res.on('header', function() {
-        stopWatch.done('request ' + req.path + ' finished');
-    });
-
-    next();
-}
-
 function install(app) {
     app.use(logging);
     app.use(slashRedir);
 
     app.use(express.static(path.join(__dirname, '../page'), {redirect:true}));
-
-    app.use(benchmark);
 }
 
 module.exports.install = install;
