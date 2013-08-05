@@ -27,12 +27,12 @@ function _readFile(file, holder, callback) {
     })
 }
 
-function load(holder, dirPath) {
+function load(holder, dirPath, callback) {
     var loadStopwatch = logger.startTimer();
 
     fs.readdir(dirPath, function(error, files) {
         if(error) {
-            return logger.error('could not open directory: ' + dirPath)
+            return logger.error('could not open directory ' + dirPath)
         }
 
         var chain = seq();
@@ -45,6 +45,7 @@ function load(holder, dirPath) {
 
         chain.seq(function() {
             loadStopwatch.done('finished loading for: ' + dirPath);
+            callback();
         });
     });
 }

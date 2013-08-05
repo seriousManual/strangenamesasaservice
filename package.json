@@ -15,7 +15,8 @@
     },
     "devDependencies": {
         "mocha": "*",
-        "chai": "*"
+        "chai": "*",
+        "sinon": "*"
     },
     "keywords": [],
     "scripts": {

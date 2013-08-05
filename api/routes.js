@@ -11,8 +11,8 @@ function bootstrap() {
     var nounHolder = new Holder();
     var adjectiveHolder = new Holder();
 
-    loader.load(nounHolder, path.join(__dirname, '/../resources/nouns'));
-    loader.load(adjectiveHolder, path.join(__dirname, '/../resources/adjectives'));
+    loader.load(nounHolder, path.join(__dirname, '/../resources/nouns'), function() {});
+    loader.load(adjectiveHolder, path.join(__dirname, '/../resources/adjectives'), function() {});
 
     return new Dispatcher(nounHolder, adjectiveHolder);
 }
