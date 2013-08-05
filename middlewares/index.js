@@ -38,7 +38,6 @@ function install(app) {
     app.use(slashRedir);
 
     app.use(express.static(path.join(__dirname, '../page'), {redirect:true}));
-    app.use(express.favicon());
 
     app.use(benchmark);
 }
