@@ -1,6 +1,6 @@
 var express = require('express');
 
-var routes = require('./api/routes');
+var routes = require('./routes');
 var middlewares = require('./middlewares');
 
 var app = express();

@@ -3,7 +3,7 @@ var path = require('path');
 
 var express = require('express');
 
-var logger = require('../api/logger');
+var logger = require('../lib/logger');
 
 function slashRedir(req, res, next) {
     var pathname = url.parse(req.originalUrl).pathname;

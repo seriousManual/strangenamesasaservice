@@ -1,4 +1,4 @@
-var logger = require('../api/logger');
+var logger = require('../lib/logger');
 
 module.exports = function benchmark(req, res, next) {
     var stopWatch= logger.startTimer();

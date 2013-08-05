@@ -1,19 +1,19 @@
 var path = require('path');
 var util = require('util');
 
-var Dispatcher = require('./words/Dispatcher');
-var Holder = require('./words/Holder');
-var loader = require('./words/Loader');
-var errors = require('./errors');
-var logger = require('./logger');
-var benchmark = require('../middlewares/benchmark');
+var Dispatcher = require('./lib/Dispatcher');
+var Holder = require('./lib/words/Holder');
+var loader = require('./lib/words/Loader');
+var errors = require('./lib/errors');
+var logger = require('./lib/logger');
+var benchmark = require('./middlewares/benchmark');
 
 function bootstrap() {
     var nounHolder = new Holder();
     var adjectiveHolder = new Holder();
 
-    loader.load(nounHolder, path.join(__dirname, '/../resources/nouns'), function() {});
-    loader.load(adjectiveHolder, path.join(__dirname, '/../resources/adjectives'), function() {});
+    loader.load(nounHolder, path.join(__dirname, './resources/nouns'), function() {});
+    loader.load(adjectiveHolder, path.join(__dirname, './resources/adjectives'), function() {});
 
     return new Dispatcher(nounHolder, adjectiveHolder);
 }
