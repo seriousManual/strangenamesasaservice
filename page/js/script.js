@@ -4,9 +4,21 @@ function callAPI(category, url, container) {
     container.removeClass('errorClass');
     container.empty().append($img);
 
+    var options = {
+        url: url
+    };
+
+    var language = $('#langSelection').val();
+
     ga('send', 'event', 'tryit', category, url);
 
-    var ajaxCall = $.get(url)
+    if(language !== 'acc') {
+        options.beforeSend = function(request) {
+            request.setRequestHeader('Accept-Language', language);
+        };
+    }
+
+    var ajaxCall = $.ajax(options)
         .done(function(data) {
             container.text(JSON.stringify(data));
         })
@@ -14,6 +26,20 @@ function callAPI(category, url, container) {
             container.addClass('errorClass');
             container.text(ajaxCall.responseText);
         })
+}
+
+function fillLangSelect() {
+    $.ajax({
+        url: '/api/languages',
+        dataType: 'json'
+    })
+    .done(function(data) {
+        for(var i = 0; i < data.length; i++) {
+            $('#langSelection').append(
+                $('<option></option>').val(data[i]).text(data[i])
+            );
+        }
+    });
 }
 
 $(document).ready(function() {
@@ -26,4 +52,6 @@ $(document).ready(function() {
             callAPI('alliterationLetter', '/api/alliteration/' + letter, $('#getAlliterationLetterRes'));
         }
     });
+
+    fillLangSelect();
 });
