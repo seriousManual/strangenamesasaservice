@@ -63,7 +63,7 @@ function install(app) {
         var language = getLanguage(req);
 
         if(!language) {
-            throw new errors.LanguageNotSuppliedError();
+            return next(new errors.LanguageNotSuppliedError());
         }
 
         var result = myDispatcher.name(language);
@@ -80,7 +80,7 @@ function install(app) {
         var letter = req.params.letter || null;
 
         if(!language) {
-            throw new errors.LanguageNotSuppliedError();
+            return next(new errors.LanguageNotSuppliedError());
         }
 
         var result = myDispatcher.alliteration(language, letter);
