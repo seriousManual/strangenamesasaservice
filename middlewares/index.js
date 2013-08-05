@@ -17,14 +17,8 @@ function slashRedir(req, res, next) {
     }
 }
 
-function logging(req, res, next) {
-    logger.info('request: ' + req.path);
-
-    next();
-}
-
 function install(app) {
-    app.use(logging);
+    app.use(express.logger());
     app.use(slashRedir);
 
     app.use(express.static(path.join(__dirname, '../page'), {redirect:true}));
