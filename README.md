@@ -7,7 +7,7 @@ Running at http://strangenamesasaservice.nodejitsu.com
 
 ## Multilingual
 
-Specify your desired language by specifing the `Accept-Language` header.
+Specify your desired language by setting the `Accept-Language` header.
 
 ## Api
 
@@ -27,6 +27,10 @@ Alliteration starting with :letter
 
 Contributions are very welcome!
 
+### roadmap
+
+* more tests
 * More languages (Until now only english is supported)
 * More language resources
 * until now snaas has no support for grammatical genders which is not a problem when it comes to english, but e.g. in german things are different
+* refactor client scripts
