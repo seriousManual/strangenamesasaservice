@@ -29,3 +29,4 @@ Contributions are very welcome!
 
 * More languages (Until now only english is supported)
 * More language resources
+* until now snaas has no support for grammatical genders which is not a problem when it comes to english, but e.g. in german things are different
