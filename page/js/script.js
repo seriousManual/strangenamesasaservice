@@ -43,10 +43,18 @@ function fillLangSelect() {
 }
 
 function fillExample(url, container) {
-    $.ajax({url: url, dataType: 'json', success: function(data) {
-        console.log( data );
-        container.text(data.name);
-    }});
+    var options = {
+        url: url,
+        beforeSend: function(request) {
+            request.setRequestHeader('Accept-Language', 'en');
+        },
+        dataType: 'json',
+        success: function(data) {
+            container.text(data.name);
+        }
+    };
+
+    $.ajax(options);
 }
 
 $(document).ready(function() {
