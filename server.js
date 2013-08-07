@@ -5,6 +5,8 @@ var middlewares = require('./middlewares');
 
 var app = express();
 
+app.enable('trust proxy');
+
 middlewares.install(app);
 routes.install(app);
 

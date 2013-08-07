@@ -1,7 +1,7 @@
 {
     "name": "strangenamesasaservice",
     "description": "strange names as a service",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "repository": {
         "type": "git",
         "url": "https://github.com/zaphod1984/strangenamesasaservice.git"
