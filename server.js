@@ -8,6 +8,8 @@ var port = argv.port || 8080;
 
 var app = express();
 
+app.enable('trust proxy');
+
 middlewares.install(app);
 routes.install(app);
 

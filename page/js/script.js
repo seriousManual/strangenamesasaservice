@@ -25,7 +25,7 @@ function callAPI(category, url, container) {
         .fail(function(data, state, message) {
             container.addClass('errorClass');
             container.text(ajaxCall.responseText);
-        })
+        });
 }
 
 function fillLangSelect() {
@@ -42,6 +42,21 @@ function fillLangSelect() {
     });
 }
 
+function fillExample(url, container) {
+    var options = {
+        url: url,
+        beforeSend: function(request) {
+            request.setRequestHeader('Accept-Language', 'en');
+        },
+        dataType: 'json',
+        success: function(data) {
+            container.text(data.name);
+        }
+    };
+
+    $.ajax(options);
+}
+
 $(document).ready(function() {
     $('#getName').click(callAPI.bind(null, 'name', '/api/name', $('#getNameRes')));
     $('#getAlliteration').click(callAPI.bind(null, 'alliteration', '/api/alliteration', $('#getAlliterationRes')));
@@ -54,4 +69,6 @@ $(document).ready(function() {
     });
 
     fillLangSelect();
+    fillExample('/api/name', $('#exampleOne'));
+    fillExample('/api/alliteration', $('#exampleTwo'));
 });
