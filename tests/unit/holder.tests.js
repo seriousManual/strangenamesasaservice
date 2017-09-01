@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-var Holder = require('../../api/words/Holder');
+var Holder = require('../../lib/words/Holder');
 
 describe('Holder', function() {
     var myHolder;

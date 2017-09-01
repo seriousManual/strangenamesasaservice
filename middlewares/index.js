@@ -3,12 +3,11 @@ var path = require('path');
 
 var express = require('express');
 
-var logger = require('../lib/logger');
-
 function slashRedir(req, res, next) {
     var pathname = url.parse(req.originalUrl).pathname;
 
-    if(pathname == '/') {
+    if(pathname === '/') {
+        //TODO
         res.statusCode = 303;
         res.setHeader('Location', pathname + 'index.htm');
         res.end('Redirecting to ' + pathname + 'index.htm');
@@ -18,9 +17,7 @@ function slashRedir(req, res, next) {
 }
 
 function install(app) {
-    app.use(express.logger());
     app.use(slashRedir);
-
     app.use(express.static(path.join(__dirname, '../page'), {redirect:true}));
 }
 

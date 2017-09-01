@@ -3,7 +3,7 @@ var path = require('path');
 var expect = require('chai').expect;
 var sinon = require('sinon');
 
-var loader = require('../../api/words/Loader');
+var loader = require('../../lib/words/Loader');
 
 describe('Loader', function() {
 
