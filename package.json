@@ -1,34 +1,30 @@
 {
-    "name": "strangenamesasaservice",
-    "description": "strange names as a service",
-    "version": "0.4.4",
-    "scripts": {
-        "deploy": "git pull origin master && npm i",
-        "restart": "NODE_ENV=strangenames forever restart strangenames",
-        "start": "NODE_ENV=strangenames forever start -l strangenames.log -o strangenames.log -e strangenames-error.log --append --uid strangenames server.js",
-        "test": "mocha tests",
-        "update": "npm run deploy && npm run restart"
-    },
-
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/seriousManual/strangenamesasaservice.git"
-    },
-    "author": "Manuel Ernst <seriousstuff@gmx.de>",
-    "dependencies": {
-        "dedupe": "^2.1.0",
-        "express": "^4.15.4",
-        "optimist": "^0.6.1",
-        "seq": "^0.3.5",
-        "winston": "^2.3.1"
-    },
-    "devDependencies": {
-        "chai": "^4.1.2",
-        "mocha": "^3.5.0",
-        "sinon": "^3.2.1"
-    },
-    "keywords": [],
-    "scripts": {
-        "start": "node server.js"
-    }
+  "name": "strangenamesasaservice",
+  "description": "strange names as a service",
+  "version": "0.4.4",
+  "scripts": {
+    "deploy": "git pull origin master && npm i",
+    "restart": "NODE_ENV=strangenames forever restart strangenames",
+    "start": "NODE_ENV=strangenames forever start -l strangenames.log -o strangenames.log -e strangenames-error.log --append --uid strangenames server.js",
+    "test": "mocha tests",
+    "update": "npm run deploy && npm run restart"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seriousManual/strangenamesasaservice.git"
+  },
+  "author": "Manuel Ernst <seriousstuff@gmx.de>",
+  "dependencies": {
+    "dedupe": "^2.1.0",
+    "express": "^4.15.4",
+    "optimist": "^0.6.1",
+    "seq": "^0.3.5",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0",
+    "sinon": "^3.2.1"
+  },
+  "keywords": []
 }
