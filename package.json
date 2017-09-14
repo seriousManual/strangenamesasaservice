@@ -2,6 +2,14 @@
     "name": "strangenamesasaservice",
     "description": "strange names as a service",
     "version": "0.4.4",
+    "scripts": {
+        "deploy": "git pull origin master && npm i",
+        "restart": "NODE_ENV=strangenames forever restart strangenames",
+        "start": "NODE_ENV=strangenames forever start -l strangenames.log -o strangenames.log -e strangenames-error.log --append --uid strangenames server.js",
+        "test": "mocha tests",
+        "update": "npm run deploy && npm run restart"
+    },
+
     "repository": {
         "type": "git",
         "url": "https://github.com/seriousManual/strangenamesasaservice.git"
