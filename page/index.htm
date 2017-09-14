@@ -14,24 +14,35 @@
     <link href="/css/style.css" rel="stylesheet">
     <script src="/js/script.js"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106491536-1"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments)};
-        gtag('js', new Date());
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-        gtag('config', 'UA-106491536-1');
+        ga('create', 'UA-106491536-1', 'auto');
+        ga('send', 'pageview');
     </script>
 
 </head>
 
 <body>
 
-<a href="https://github.com/seriousManual/strangenamesasaservice"><img style="z-index:9999; position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/seriousManual/strangenamesasaservice"><img
+        style="z-index:9999; position: fixed; top: 0; right: 0; border: 0;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">SNAAS</a>
+
         <div class="nav-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
@@ -48,15 +59,23 @@
 
     <div class="jumbotron">
         <h1>SNAAS</h1>
+
         <h2>Strange Names As A Service </h2>
-        <p>Inspired by <a href="https://foaas.herokuapp.com/">Fuck off as a service</a> and the AngularJS naming scheme (<a href="https://github.com/angular/angular.js/blob/master/CHANGELOG.md">link</a>), this is a service that builds strange name combinations like "<em id="exampleOne">impure skiing</em>" or "<em id="exampleTwo">upright zephyr</em>" so you don't have to.</p>
-        <p>Choose between arbitrary adjective-noun combinations, random alliterations or alliterations starting with your desired literal.</p>
+
+        <p>Inspired by <a href="https://foaas.herokuapp.com/">Fuck off as a service</a> and the AngularJS naming scheme
+            (<a href="https://github.com/angular/angular.js/blob/master/CHANGELOG.md">link</a>), this is a service that
+            builds strange name combinations like "<em id="exampleOne">impure skiing</em>" or "<em id="exampleTwo">upright
+                zephyr</em>" so you don't have to.</p>
+
+        <p>Choose between arbitrary adjective-noun combinations, random alliterations or alliterations starting with
+            your desired literal.</p>
     </div>
 
     <div class="body-content">
         <div class="row">
             <div class="col-lg-4">
                 <h2>Multilingual</h2>
+
                 <p>Multi language support, just provide your desired language in the Accepted-Language Header:</p>
                 <pre>Accept-Language: en</pre>
                 <p>Currently supported languages: English</p>
@@ -64,7 +83,9 @@
             </div>
             <div class="col-lg-4">
                 <h2>Restful API</h2>
+
                 <p>SNAAS offers a restful API to generate your own strange names just as you desire.</p>
+
                 <p><a class="btn btn-default" href="#api">View details &raquo;</a></p>
             </div>
             <div class="col-lg-4">
@@ -101,7 +122,9 @@
 
             <div class="row">
                 <div class="col-lg-5">
-                    <button id="getAlliteration" type="button" class="btn btn-primary btn-large">Get me a strange alliteration</button>
+                    <button id="getAlliteration" type="button" class="btn btn-primary btn-large">Get me a strange
+                        alliteration
+                    </button>
                 </div>
                 <div class="col-lg-7">
                     <pre id="getAlliterationRes"></pre>
@@ -112,7 +135,9 @@
 
             <div class="row">
                 <div class="col-lg-5">
-                    <button id="getAlliterationLetter" type="button" class="btn btn-primary btn-large">Get me a strange alliteration starting with</button>
+                    <button id="getAlliterationLetter" type="button" class="btn btn-primary btn-large">Get me a strange
+                        alliteration starting with
+                    </button>
                     <input id="letter" type="text">
                 </div>
                 <div class="col-lg-7">
@@ -123,12 +148,14 @@
 
         <div id="api" class="block">
             <h2>API</h2>
+
             <h3>/api/name</h3>
             Returns a strange name in a arbitrary adjective-noun combination.
             <p><a class="btn btn-default" href="/api/name">Try &raquo;</a></p>
 
             <h3>/api/alliteration/:letter?</h3>
-            Returns a alliteration. The parameter <em>letter</em> is optional and specifies the letter the alliteration begins with.
+            Returns a alliteration. The parameter <em>letter</em> is optional and specifies the letter the alliteration
+            begins with.
             <p>
                 <a class="btn btn-default" href="/api/alliteration">Try (no letter) &raquo;</a>
                 <a class="btn btn-default" href="/api/alliteration/a">Try (starting letter <em>a</em>) &raquo;</a>
@@ -143,15 +170,20 @@
 
         <div id="contribute" class="block">
             <h2>Contribute</h2>
+
             <p>I'm permanently looking for more languages and additions to the existing languages.</p>
+
             <p>Feel free to do a Pull Request in whatever language you like and are familiar with!</p>
             <a class="btn btn-default" href="https://github.com/seriousManual/strangenamesasaservice">Github &raquo;</a>
         </div>
 
         <div id="about" class="block">
             <h2>About</h2>
+
             <p>Created by <a href="https://twitter.com/seriousManual">@seriousManual</a></p>
-            <p>All <a href="https://github.com/seriousManual/strangenamesasaservice">contributions</a> are very welcome!</p>
+
+            <p>All <a href="https://github.com/seriousManual/strangenamesasaservice">contributions</a> are very welcome!
+            </p>
         </div>
 
         <hr>
