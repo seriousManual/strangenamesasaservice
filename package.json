@@ -5,7 +5,7 @@
   "scripts": {
     "deploy": "git pull origin master && npm i",
     "restart": "NODE_ENV=strangenames forever restart strangenames",
-    "start": "NODE_ENV=strangenames forever start -l strangenames.log -o strangenames.log -e strangenames-error.log --append --uid strangenames server.js --port=1338",
+    "start": "NODE_ENV=strangenames forever start -l strangenames.log -o strangenames.log -e strangenames-error.log --append --uid --c /home/mer/.nvm/versions/node/v6.0.0/bin/node strangenames server.js --port=1338",
     "test": "mocha tests",
     "update": "npm run deploy && npm run restart"
   },
