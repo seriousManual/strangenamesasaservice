@@ -3,7 +3,7 @@
 Strange Names As A Service provides an API set creates strange name combinations like "kind typhoon" or "lined ladybug" so you dont't have to.
 Choose between arbitrary adjective-noun combinations, random alliterations or alliterations starting with your desired literal.
 
-Running at http://http://strangenames.ernestly.com
+Running at http://strangenames.ernestly.com
 
 ## Multilingual
 
